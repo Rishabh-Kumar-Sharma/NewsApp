@@ -6,48 +6,41 @@ import {
   Route /*, Link */,
 } from "react-router-dom";
 
-import React, { Component } from "react";
+import React,{ useState } from "react";
 import Navbar from "./components/Navbar";
 import News from "./components/News";
 import LoadingBar from "react-top-loading-bar";
 
-export default class App extends Component {
-  pageSize = 10;
-  country = "in";
-  apiKey = process.env.REACT_APP_NEWS_API; // this type of naming convention is compulsory in order to use this 'secret' variable
+const App =()=> {
+  const pageSize=10;
+  const country="in";
+  const apiKey = process.env.REACT_APP_NEWS_API; // type of naming convention is compulsory in order to use 'secret' variable
 
-  state = {
-    progress: 0,
-  };
-
-  setProgress = (progress) => {
-    this.setState({ progress: progress });
-  };
+  const [progress , setProgress]=useState(0);
 
   // c='Rishabh';
-  render() {
     return (
       <div>
         <Router>
           <LoadingBar
             color="#f11946"
-            progress={this.state.progress}
+            progress={progress}
             height={3}
             // onLoaderFinished={() => setProgress(0)}
           />
           <Navbar />
-          {/* {this.c}'s first class based React Component */}
+          {/* {c}'s first class based React Component */}
           <Routes>
             <Route
               exact
               path="/"
               element={
                 <News
-                  setProgress={this.setProgress}
-                  apiKey={this.apiKey}
+                  setProgress={setProgress}
+                  apiKey={apiKey}
                   key="general"
-                  pageSize={this.pageSize}
-                  country={this.country}
+                  pageSize={pageSize}
+                  country={country}
                   category="general"
                 />
               }
@@ -57,11 +50,11 @@ export default class App extends Component {
               path="/general"
               element={
                 <News
-                  setProgress={this.setProgress}
-                  apiKey={this.apiKey}
+                  setProgress={setProgress}
+                  apiKey={apiKey}
                   key="general"
-                  pageSize={this.pageSize}
-                  country={this.country}
+                  pageSize={pageSize}
+                  country={country}
                   category="general"
                 />
               }
@@ -71,11 +64,11 @@ export default class App extends Component {
               path="/business"
               element={
                 <News
-                  setProgress={this.setProgress}
-                  apiKey={this.apiKey}
+                  setProgress={setProgress}
+                  apiKey={apiKey}
                   key="business"
-                  pageSize={this.pageSize}
-                  country={this.country}
+                  pageSize={pageSize}
+                  country={country}
                   category="business"
                 />
               }
@@ -85,11 +78,11 @@ export default class App extends Component {
               path="/entertainment"
               element={
                 <News
-                  setProgress={this.setProgress}
-                  apiKey={this.apiKey}
+                  setProgress={setProgress}
+                  apiKey={apiKey}
                   key="entertainment"
-                  pageSize={this.pageSize}
-                  country={this.country}
+                  pageSize={pageSize}
+                  country={country}
                   category="entertainment"
                 />
               }
@@ -99,11 +92,11 @@ export default class App extends Component {
               path="/health"
               element={
                 <News
-                  setProgress={this.setProgress}
-                  apiKey={this.apiKey}
+                  setProgress={setProgress}
+                  apiKey={apiKey}
                   key="health"
-                  pageSize={this.pageSize}
-                  country={this.country}
+                  pageSize={pageSize}
+                  country={country}
                   category="health"
                 />
               }
@@ -113,11 +106,11 @@ export default class App extends Component {
               path="/science"
               element={
                 <News
-                  setProgress={this.setProgress}
-                  apiKey={this.apiKey}
+                  setProgress={setProgress}
+                  apiKey={apiKey}
                   key="science"
-                  pageSize={this.pageSize}
-                  country={this.country}
+                  pageSize={pageSize}
+                  country={country}
                   category="science"
                 />
               }
@@ -127,11 +120,11 @@ export default class App extends Component {
               path="/sports"
               element={
                 <News
-                  setProgress={this.setProgress}
-                  apiKey={this.apiKey}
+                  setProgress={setProgress}
+                  apiKey={apiKey}
                   key="sports"
-                  pageSize={this.pageSize}
-                  country={this.country}
+                  pageSize={pageSize}
+                  country={country}
                   category="sports"
                 />
               }
@@ -141,11 +134,11 @@ export default class App extends Component {
               path="/technology"
               element={
                 <News
-                  setProgress={this.setProgress}
-                  apiKey={this.apiKey}
+                  setProgress={setProgress}
+                  apiKey={apiKey}
                   key="technology"
-                  pageSize={this.pageSize}
-                  country={this.country}
+                  pageSize={pageSize}
+                  country={country}
                   category="technology"
                 />
               }
@@ -154,5 +147,5 @@ export default class App extends Component {
         </Router>
       </div>
     );
-  }
 }
+export default App;
